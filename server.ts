@@ -23,6 +23,41 @@ app.get('/google4932b51f4e4ad751.html', (_req, res) => {
   res.type('text/html').send('google-site-verification: google4932b51f4e4ad751.html\n');
 });
 
+// Dynamic XML Sitemap Endpoint
+app.get('/sitemap.xml', (req, res) => {
+  const host = req.get('host') || 'ais-pre-2el6aaobadfc4pgyeqypir-565348261452.asia-southeast1.run.app';
+  const protocol = req.protocol === 'https' || req.headers['x-forwarded-proto'] === 'https' ? 'https' : 'http';
+  const baseUrl = `${protocol}://${host}`;
+  const today = new Date().toISOString().split('T')[0];
+
+  const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>${baseUrl}/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>`;
+
+  res.type('application/xml').send(sitemapXml);
+});
+
+// Robots.txt Endpoint
+app.get('/robots.txt', (req, res) => {
+  const host = req.get('host') || 'ais-pre-2el6aaobadfc4pgyeqypir-565348261452.asia-southeast1.run.app';
+  const protocol = req.protocol === 'https' || req.headers['x-forwarded-proto'] === 'https' ? 'https' : 'http';
+  const baseUrl = `${protocol}://${host}`;
+
+  const robotsTxt = `User-agent: *
+Allow: /
+
+Sitemap: ${baseUrl}/sitemap.xml
+`;
+
+  res.type('text/plain').send(robotsTxt);
+});
+
 interface Player {
   id: string; // Persistent player session ID
   socketId: string;
