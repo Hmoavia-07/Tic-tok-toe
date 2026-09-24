@@ -25,9 +25,9 @@ app.get(['/google4932b51f4e4ad751.html', '/google4932b51f4e4ad751'], (_req, res)
 
 // Dynamic XML Sitemap Endpoint
 app.get('/sitemap.xml', (req, res) => {
-  const host = req.get('host') || 'ais-pre-2el6aaobadfc4pgyeqypir-565348261452.asia-southeast1.run.app';
+  const host = req.get('host') || 'livegame-tictactoe.ai.studio';
   const protocol = req.protocol === 'https' || req.headers['x-forwarded-proto'] === 'https' ? 'https' : 'http';
-  const baseUrl = `${protocol}://${host}`;
+  const baseUrl = host.includes('localhost') ? `${protocol}://${host}` : 'https://livegame-tictactoe.ai.studio';
   const today = new Date().toISOString().split('T')[0];
 
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -45,9 +45,9 @@ app.get('/sitemap.xml', (req, res) => {
 
 // Robots.txt Endpoint
 app.get('/robots.txt', (req, res) => {
-  const host = req.get('host') || 'ais-pre-2el6aaobadfc4pgyeqypir-565348261452.asia-southeast1.run.app';
+  const host = req.get('host') || 'livegame-tictactoe.ai.studio';
   const protocol = req.protocol === 'https' || req.headers['x-forwarded-proto'] === 'https' ? 'https' : 'http';
-  const baseUrl = `${protocol}://${host}`;
+  const baseUrl = host.includes('localhost') ? `${protocol}://${host}` : 'https://livegame-tictactoe.ai.studio';
 
   const robotsTxt = `User-agent: *
 Allow: /

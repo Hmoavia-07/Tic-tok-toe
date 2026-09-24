@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ais-pre-2el6aaobadfc4pgyeqypir-565348261452.asia-southeast1.run.app/sitemap.xml
+Sitemap: https://livegame-tictactoe.ai.studio/sitemap.xml
