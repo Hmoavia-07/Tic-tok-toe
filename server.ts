@@ -18,9 +18,9 @@ const io = new Server(httpServer, {
 
 app.use(express.json());
 
-// Google Search Console Verification Endpoint
-app.get('/google4932b51f4e4ad751.html', (_req, res) => {
-  res.type('text/html').send('google-site-verification: google4932b51f4e4ad751.html\n');
+// Google Search Console Verification Endpoints
+app.get(['/google4932b51f4e4ad751.html', '/google4932b51f4e4ad751'], (_req, res) => {
+  res.status(200).type('text/html').send('google-site-verification: google4932b51f4e4ad751.html');
 });
 
 // Dynamic XML Sitemap Endpoint
